@@ -82,8 +82,8 @@ def refreshPosition(win):
                 valueLeCap.config(text=round(initialBearing))
             except:
                 pass
-    except IOError as e:
-        print(e)
+    except:
+        pass
     else:
         win.after(100, lambda: refreshPosition(win))
 
