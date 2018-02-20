@@ -17,21 +17,8 @@ win.resizable("False", "False")
 donneeDestinationLatitude = tk.DoubleVar()
 donneeDestinationLongitude = tk.DoubleVar()
 
-coordonnesActuelles = ttk.LabelFrame(win, text="Votre position")
-coordonnesActuelles.grid(column=0, row=0)
-
-labelCoordonneesLatitude = ttk.Label(coordonnesActuelles, text="Latitude")
-labelCoordonneesLatitude.grid(column=0, row=0, sticky=tk.W)
-labelCoordonneesLongitude = ttk.Label(coordonnesActuelles, text="Longitude")
-labelCoordonneesLongitude.grid(column=1, row=0, sticky=tk.W)
-
-valueCoordonneesLatitude = ttk.Label(coordonnesActuelles, text="-")
-valueCoordonneesLatitude.grid(column=0, row=1, sticky=tk.W)
-valueCoordonneesLongitude = ttk.Label(coordonnesActuelles, text="-")
-valueCoordonneesLongitude.grid(column=1, row=1, sticky=tk.W)
-
 destination = ttk.LabelFrame(win, text="Votre destination")
-destination.grid(column=1, row=0)
+destination.grid(column=0, row=0)
 
 labelDestinationLatitude = ttk.Label(destination, text="Latitude")
 labelDestinationLatitude.grid(column=0, row= 0, sticky=tk.W)
@@ -46,7 +33,7 @@ valueDestinationLongitude.grid(column=1, row=1, sticky=tk.W)
 valueDestinationLatitude.focus()
 
 leCap = ttk.LabelFrame(win, text="Cap à suivre", relief="sunken")
-leCap.grid(column=0, row=1, columnspan=2)
+leCap.grid(column=0, row=1)
 valueLeCap = ttk.Label(leCap, text="-")
 valueLeCap.grid(column=0, row=0)
 valueLeCap.configure(font=("Helvetica", "72"))
