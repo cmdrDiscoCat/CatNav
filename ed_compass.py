@@ -53,7 +53,7 @@ valueLeCap.configure(font=("Helvetica", "72"))
 
 def refreshPosition(win):
     try:
-        with open(r'C:\Users\paind\Saved Games\Frontier Developments\Elite Dangerous\Status.json','r') as infile:
+        with open(r'%userprofile%\Saved Games\Frontier Developments\Elite Dangerous\Status.json','r') as infile:
             try:
                 status = json.load(infile)
                 valueCoordonneesLatitude.config(text=round(status["Latitude"],2))
