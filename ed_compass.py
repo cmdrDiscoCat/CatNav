@@ -1,42 +1,70 @@
 import tkinter as tk
 from tkinter import ttk
-import json
 
 import threading
 import time
 import json
 import math
 
-# init
+import ctypes
 
+#   shortcuts to the WinAPI functionality
+set_window_pos = ctypes.windll.user32.SetWindowPos
+get_window_long = ctypes.windll.user32.GetWindowLongW
+set_window_long = ctypes.windll.user32.SetWindowLongW
+get_parent = ctypes.windll.user32.GetParent
+#   some of the WinAPI flags
+GWL_STYLE = -16
+GWL_EXSTYLE = -20
+WS_MINIMIZEBOX = 131072
+WS_MAXIMIZEBOX = 65536
+SWP_NOZORDER = 4
+SWP_NOMOVE = 2
+SWP_NOSIZE = 1
+SWP_FRAMECHANGED = 32
+WS_EX_APPWINDOW  = 0x00040000
+WS_EX_LAYERED    = 0x00080000
+
+# init
 win = tk.Tk()
 win.title("ED-Compass")
 win.iconbitmap('ed.ico')
 win.resizable("False", "False")
+win.geometry("130x190")
+
+hwnd = get_parent(win.winfo_id())
+old_style = get_window_long(hwnd, GWL_STYLE)
+new_style = old_style & ~ WS_MAXIMIZEBOX & ~ WS_MINIMIZEBOX
+set_window_long(hwnd, GWL_STYLE, new_style)
+set_window_pos(hwnd, 0, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP_FRAMECHANGED)
 
 donneeDestinationLatitude = tk.DoubleVar()
 donneeDestinationLongitude = tk.DoubleVar()
 
 destination = ttk.LabelFrame(win, text="Votre destination")
-destination.grid(column=0, row=0)
+destination.pack(fill="x")
+destination.columnconfigure(0, weight=1)
 
-labelDestinationLatitude = ttk.Label(destination, text="Latitude")
-labelDestinationLatitude.grid(column=0, row= 0, sticky=tk.W)
-labelDestinationLongitude = ttk.Label(destination, text="Longitude")
-labelDestinationLongitude.grid(column=1, row= 0, sticky=tk.W)
+labelDestinationLatitude = ttk.Label(destination, text="  Latitude  ")
+labelDestinationLatitude.grid(column=0, row= 0, sticky=tk.N)
+labelDestinationLongitude = ttk.Label(destination, text="  Longitude  ")
+labelDestinationLongitude.grid(column=1, row= 0, sticky=tk.N)
 
 valueDestinationLatitude = ttk.Entry(destination, width=6,textvariable=donneeDestinationLatitude)
-valueDestinationLatitude.grid(column=0, row=1, sticky=tk.W)
+valueDestinationLatitude.grid(column=0, row=1, sticky=tk.N)
 valueDestinationLongitude = ttk.Entry(destination, width=6,textvariable=donneeDestinationLongitude)
-valueDestinationLongitude.grid(column=1, row=1, sticky=tk.W)
+valueDestinationLongitude.grid(column=1, row=1, sticky=tk.N)
 
 valueDestinationLatitude.focus()
 
 leCap = ttk.LabelFrame(win, text="Cap à suivre", relief="sunken")
-leCap.grid(column=0, row=1)
+leCap.columnconfigure(0, weight=1)
+leCap.pack(fill="x")
 valueLeCap = ttk.Label(leCap, text="-")
-valueLeCap.grid(column=0, row=0)
+valueLeCap.grid(column=0, row=0, sticky=tk.N)
 valueLeCap.configure(font=("Helvetica", "72"))
+valueLeCap.columnconfigure(0, weight=1)
+
 
 def refreshPosition(win):
     try:
