@@ -41,7 +41,7 @@ set_window_pos(hwnd, 0, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE | SWP_NOZORDER | SWP
 donneeDestinationLatitude = tk.DoubleVar()
 donneeDestinationLongitude = tk.DoubleVar()
 
-destination = ttk.LabelFrame(win, text="Votre destination")
+destination = ttk.LabelFrame(win, text="Your destination")
 destination.pack(fill="x")
 destination.columnconfigure(0, weight=1)
 
@@ -57,7 +57,7 @@ valueDestinationLongitude.grid(column=1, row=1, sticky=tk.N)
 
 valueDestinationLatitude.focus()
 
-leCap = ttk.LabelFrame(win, text="Cap à suivre", relief="sunken")
+leCap = ttk.LabelFrame(win, text="", relief="sunken")
 leCap.columnconfigure(0, weight=1)
 leCap.pack(fill="x")
 valueLeCap = ttk.Label(leCap, text="-")

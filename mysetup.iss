@@ -22,12 +22,12 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 OutputBaseFilename=ed-compass-setup
-SetupIconFile=C:\Users\paind\Desktop\Projets\ed_compass\build\exe.win32-3.6\ed.ico
+SetupIconFile=C:\Users\paind\Desktop\Projets\ed_compass\ed.ico
 Compression=lzma
 SolidCompression=yes
 
 [Languages]
-Name: "french"; MessagesFile: "compiler:Languages\French.isl"
+
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
