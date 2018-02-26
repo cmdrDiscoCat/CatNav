@@ -27,7 +27,6 @@ Compression=lzma
 SolidCompression=yes
 
 [Languages]
-Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
