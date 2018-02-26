@@ -5,6 +5,7 @@ import threading
 import time
 import json
 import math
+import os
 
 import ctypes
 
@@ -24,6 +25,12 @@ SWP_NOSIZE = 1
 SWP_FRAMECHANGED = 32
 WS_EX_APPWINDOW  = 0x00040000
 WS_EX_LAYERED    = 0x00080000
+
+from pathlib import Path
+home = str(Path.home())
+PATH_EDSTATUS_DEFAULT = os.path.join (
+    home, "Saved Games","Frontier Developments","Elite Dangerous","Status.json"
+)
 
 # init
 win = tk.Tk()
@@ -68,7 +75,7 @@ valueLeCap.columnconfigure(0, weight=1)
 
 def refreshPosition(win):
     try:
-        with open(r'%userprofile%\Saved Games\Frontier Developments\Elite Dangerous\Status.json','r') as infile:
+        with open(PATH_EDSTATUS_DEFAULT,'r') as infile:
             try:
                 status = json.load(infile)
                 valueCoordonneesLatitude.config(text=round(status["Latitude"],2))
