@@ -73,8 +73,6 @@ valueLeCap.grid(column=0, row=0, sticky=tk.N)
 valueLeCap.configure(font=("Helvetica", "52"))
 valueLeCap.columnconfigure(0, weight=1)
 
-print(PATH_EDSTATUS_DEFAULT)
-
 def refreshPosition(win):
     try:
         with open(PATH_EDSTATUS_DEFAULT,'r') as infile:
@@ -92,17 +90,12 @@ def refreshPosition(win):
                 latDest = donneeDestinationLatitude.get() * math.pi/180
                 lonDest = donneeDestinationLongitude.get() * math.pi/180
 
-                print(latDest)
-                print(lonDest)
-
                 deltaLon = lonDest - lonStart
                 deltaLat = math.log(math.tan(math.pi/4 + latDest/2)/math.tan(math.pi/4 + latStart/2))
                 initialBearing = (math.atan2(deltaLon, deltaLat)) * (180/math.pi);
 
                 if initialBearing < 0 :
                     initialBearing = 360 + initialBearing
-
-                print(initialBearing)
 
                 valueLeCap.config(text=round(initialBearing))
             except:
