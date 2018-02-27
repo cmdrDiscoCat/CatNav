@@ -28,6 +28,7 @@ WS_EX_LAYERED    = 0x00080000
 
 from pathlib import Path
 home = str(Path.home())
+
 PATH_EDSTATUS_DEFAULT = os.path.join (
     home, "Saved Games","Frontier Developments","Elite Dangerous","Status.json"
 )
@@ -69,34 +70,39 @@ leCap.columnconfigure(0, weight=1)
 leCap.pack(fill="x")
 valueLeCap = ttk.Label(leCap, text="-")
 valueLeCap.grid(column=0, row=0, sticky=tk.N)
-valueLeCap.configure(font=("Helvetica", "72"))
+valueLeCap.configure(font=("Helvetica", "52"))
 valueLeCap.columnconfigure(0, weight=1)
 
+print(PATH_EDSTATUS_DEFAULT)
 
 def refreshPosition(win):
     try:
         with open(PATH_EDSTATUS_DEFAULT,'r') as infile:
             try:
                 status = json.load(infile)
-                valueCoordonneesLatitude.config(text=round(status["Latitude"],2))
-                valueCoordonneesLongitude.config(text=round(status["Longitude"],2))
 
-                latStart = status["Latitude"] * math.pi/180;
-                lonStart = status["Longitude"] * math.pi/180;
+                latStart = status["Latitude"] * math.pi/180
+                lonStart = status["Longitude"] * math.pi/180
 
                 if not latStart:
                     latStart = 0
                 if not lonStart:
                     lonStart = 0
-                latDest = donneeDestinationLatitude.get() * math.pi/180;
-                lonDest = donneeDestinationLongitude.get() * math.pi/180;
 
-                deltaLon = lonDest - lonStart;
-                deltaLat = math.log(math.tan(math.pi/4 + latDest/2)/math.tan(math.pi/4 + latStart/2));
+                latDest = donneeDestinationLatitude.get() * math.pi/180
+                lonDest = donneeDestinationLongitude.get() * math.pi/180
+
+                print(latDest)
+                print(lonDest)
+
+                deltaLon = lonDest - lonStart
+                deltaLat = math.log(math.tan(math.pi/4 + latDest/2)/math.tan(math.pi/4 + latStart/2))
                 initialBearing = (math.atan2(deltaLon, deltaLat)) * (180/math.pi);
 
                 if initialBearing < 0 :
-                    initialBearing = 360 + initialBearing;
+                    initialBearing = 360 + initialBearing
+
+                print(initialBearing)
 
                 valueLeCap.config(text=round(initialBearing))
             except:
@@ -104,7 +110,7 @@ def refreshPosition(win):
     except:
         pass
     else:
-        win.after(100, lambda: refreshPosition(win))
+        win.after(400, lambda: refreshPosition(win))
 
 refreshPosition(win)
 win.mainloop()
