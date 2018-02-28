@@ -21,8 +21,8 @@ if sys.platform == 'win32':
     base = 'Win32GUI'
 
 setup(
-    name = "ED-Compass",
-    description='ED-Compass',
+    name = "CatNav",
+    description='CatNav',
     version=__version__,
     options = {"build_exe": {
     'packages': packages,
@@ -31,5 +31,5 @@ setup(
     'excludes': excludes,
     'include_msvcr': True,
 }},
-executables = [Executable("ed_compass.py",base=base)]
+executables = [Executable("CatNav.py",base=base)]
 )
