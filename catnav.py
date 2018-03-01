@@ -35,7 +35,7 @@ PATH_EDSTATUS_DEFAULT = os.path.join (
 
 # init
 win = tk.Tk()
-win.title("ED-Compass")
+win.title("CatNav")
 win.iconbitmap('ed.ico')
 win.resizable("False", "False")
 win.geometry("130x190")

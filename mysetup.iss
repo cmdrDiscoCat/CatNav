@@ -33,12 +33,11 @@ SolidCompression=yes
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\CatNavCatNav.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\CatNav.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\lib\*"; DestDir: "{app}\lib"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\tcl\*"; DestDir: "{app}\tcl"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\tk\*"; DestDir: "{app}\tk"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\ed.ico"; DestDir: "{app}"; Flags: ignoreversion
-Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\catnav.py"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\python36.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\tcl86t.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "C:\Users\paind\Desktop\Projets\CatNav\build\exe.win32-3.6\tk86t.dll"; DestDir: "{app}"; Flags: ignoreversion
